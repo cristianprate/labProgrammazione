@@ -27,3 +27,7 @@ bool Note::isLock() const {
 void Note::setLock(bool lock) {
     Note::lock = lock;
 }
+
+Note::Note(const std::string &title, const std::string &text) : title(title), text(text), lock(false) {
+}
+

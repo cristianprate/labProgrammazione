@@ -15,6 +15,8 @@ private:
     bool lock;
 
 public:
+    Note(const std::string &title, const std::string &text);
+
     const std::string &getTitle() const;
 
     void setTitle(const std::string &title);
