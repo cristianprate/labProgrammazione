@@ -6,3 +6,5 @@
 
 Observer::~Observer() {
 }
+
+Observer::Observer(const std::string &name) : name(name) {}

@@ -13,6 +13,8 @@ private:
     std::string name;
 
 public:
+    explicit Observer(const std::string &name);
+
     std::string getName(){
         return name;
     }

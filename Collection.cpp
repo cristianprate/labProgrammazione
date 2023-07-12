@@ -53,11 +53,9 @@ void Collection::displayNotes() {
 
 }
 
-const std::string &Collection::getName() const {
-    return name;
-}
 
-Collection::Collection( const std::string& name, Subject *subject) :name(name), subject(subject), totNotes(0) {
+
+Collection::Collection( const std::string& name, Subject *subject) :Observer(name), subject(subject), totNotes(0) {
     subject->registerO(this);
 }
 

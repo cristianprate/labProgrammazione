@@ -22,6 +22,8 @@ public:
     void addToCollection(const std::string & title, const std::string & text, const std::string &collName);
 
     void newCollection(const std::string name);
+    void displayNotesFromCollection(const std::string name);
+    void displayCollections();
 
     void registerO(Observer* const obs) override;
     void removeO(Observer* const obs) override;

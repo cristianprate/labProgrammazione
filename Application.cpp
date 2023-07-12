@@ -2,6 +2,7 @@
 // Created by prate on 11/07/2023.
 //
 
+#include <iostream>
 #include "Application.h"
 
 Application::~Application() {
@@ -30,6 +31,19 @@ void Application::removeO(Observer *const obs) {
 Application::Application() {}
 
 void Application::newCollection(const std::string name) {
-    registerO(new Collection(name, this));
+    new Collection(name, this);
+}
+
+void Application::displayNotesFromCollection(const std::string name) {
+    for(auto collection : collections){
+        if(collection->getName() == name)
+           dynamic_cast<Collection*>(collection)->displayNotes();
+    }
+}
+
+void Application::displayCollections() {
+    for(auto collection : collections){
+            std::cout << collection->getName() << std::endl;
+    }
 }
 

@@ -13,7 +13,6 @@
 
 class Collection : public Observer{
 private:
-    std::string name;
     std::vector<Note> notes;
     int totNotes;
     Subject* subject;
@@ -29,8 +28,6 @@ public:
     void changeLock(const std::string& title);
 
     void displayNotes();
-
-    const std::string &getName() const;
 
     void update(const std::string& title, const std::string& text) override;
     ~Collection() override;
