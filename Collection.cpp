@@ -46,14 +46,12 @@ void Collection::changeLock(const std::string& title) {
 
 void Collection::displayNotes() {
     for(auto & note : notes){
-        std::cout<<"------------"<<note.getTitle()<<"-------------"<<std::endl<<std::endl;
+        std::cout<<"-----------------------"<<note.getTitle()<<"---------------------"<<std::endl<<std::endl;
         std::cout<<note.getText()<<std::endl;
-        std::cout<<"----------------------------------------------"<<std::endl<<std::endl;
+        std::cout<<"----------------------------------------------------------"<<std::endl<<std::endl;
     }
 
 }
-
-
 
 Collection::Collection( const std::string& name, Subject *subject) :Observer(name), subject(subject), totNotes(0) {
     subject->registerO(this);
