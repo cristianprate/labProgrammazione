@@ -9,14 +9,19 @@
 #include <vector>
 #include "Observer.h"
 #include "Note.h"
+#include "Subject.h"
 
 class Collection : public Observer{
 private:
+    std::string name;
     std::vector<Note> notes;
     int totNotes;
+    Subject* subject;
+
+    void addNote(const std::string& title, const std::string& text);
 
 public:
-    void addNote(const std::string& title, const std::string& text);
+    explicit Collection( const std::string& name, Subject *subject);
 
     std::string getText(const std::string& title);
 
@@ -25,7 +30,9 @@ public:
 
     void displayNotes();
 
-    void update() override;
+    const std::string &getName() const;
+
+    void update(const std::string& title, const std::string& text) override;
     ~Collection() override;
 };
 

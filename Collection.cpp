@@ -5,12 +5,9 @@
 #include <iostream>
 #include "Collection.h"
 
-void Collection::update() {
+void Collection::update(const std::string& title, const std::string& text) {
+    addNote(title, text);
     totNotes++;
-}
-
-Collection::~Collection() {
-
 }
 
 void Collection::addNote(const std::string& title, const std::string& text) {
@@ -55,6 +52,19 @@ void Collection::displayNotes() {
     }
 
 }
+
+const std::string &Collection::getName() const {
+    return name;
+}
+
+Collection::Collection( const std::string& name, Subject *subject) :name(name), subject(subject), totNotes(0) {
+    subject->registerO(this);
+}
+
+Collection::~Collection() {
+    subject->removeO(this);
+}
+
 
 
 
