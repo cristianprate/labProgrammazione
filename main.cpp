@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdlib.h>
 #include "Application.h"
 
 int main() {
@@ -15,9 +14,10 @@ int main() {
             std::cout << "2. CREATE NOTE" << std::endl;
             std::cout << "3. VIEW ALL COLLECTIONS" << std::endl;
             std::cout << "4. SELECT A COLLECTION" << std::endl;
-            std::cout << "5. EXIT" << std::endl;
+            std::cout << "5. ADD TO IMPORTANT" << std::endl;
+            std::cout << "6. EXIT" << std::endl;
             std::cin >> x;
-        } while (x < 0 || x > 5);
+        } while (x < 0 || x > 6);
         system("cls");
         switch (x) {
             default:
@@ -63,6 +63,12 @@ int main() {
                 }while(appo!="a");
                 break;
             case 5:
+                std::cout << "Type the title of the note you want to add to important: "<<std::endl;
+                std::cin.ignore();
+                std::getline(std::cin, title);
+                app.addToImportant(title);
+                break;
+            case 6:
                 exit = true;
         }
         system("cls");

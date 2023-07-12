@@ -61,6 +61,10 @@ Collection::~Collection() {
     subject->removeO(this);
 }
 
+const std::vector<Note> &Collection::getNotes() const {
+    return notes;
+}
+
 
 
 

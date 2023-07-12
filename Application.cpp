@@ -22,14 +22,16 @@ void Application::addToCollection(const std::string &title, const std::string &t
 }
 
 void Application::registerO(Observer *const obs) {
-    collections.push_back(obs);
+    collections.push_back(dynamic_cast<Collection*>(obs));
 }
 
 void Application::removeO(Observer *const obs) {
-    collections.push_back(obs);
+    collections.push_back(dynamic_cast<Collection*>(obs));
 }
 
-Application::Application() = default;
+Application::Application(){
+    newCollection("Important");
+};
 
 void Application::newCollection(const std::string name) {
     new Collection(name, this);
@@ -45,6 +47,15 @@ void Application::displayNotesFromCollection(const std::string name) {
 void Application::displayCollections() {
     for(auto collection : collections){
             std::cout << collection->getName() << std::endl;
+    }
+}
+
+void Application::addToImportant(const std::string &title) {
+    for(auto collection : collections){
+        for(const auto& note : collection->getNotes()){
+            if(note.getTitle() == title)
+                addToCollection(note.getTitle(), note.getText(), "Important");
+        }
     }
 }
 

@@ -10,6 +10,7 @@
 #include "Observer.h"
 #include "Note.h"
 #include "Subject.h"
+#include "Application.h"
 
 class Collection : public Observer{
 private:
@@ -23,6 +24,7 @@ public:
     explicit Collection( const std::string& name, Subject *subject);
 
     std::string getText(const std::string& title);
+    const std::vector<Note> &getNotes() const;
 
     bool isLocked(const std::string& title);
     void changeLock(const std::string& title);
