@@ -65,6 +65,14 @@ const std::vector<Note> &Collection::getNotes() const {
     return notes;
 }
 
+void Collection::modifyNote(const std::string &title, const std::string &newText) {
+    for (Note &n: notes) {
+        if(n.getTitle()==title){
+            n.setText(newText);
+        }
+    }
+}
+
 
 
 

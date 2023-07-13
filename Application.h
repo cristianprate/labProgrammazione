@@ -10,7 +10,7 @@
 #include "Observer.h"
 #include <vector>
 
-class Collection; //forward declaration to avoid circular dependency among Application and Collection headers
+class Collection; //forward declaration to avoid circular dependency among Application and Collection headers(both have class A and B members attribute)
 class Application : public Subject{
 private:
     std::vector<Collection*> collections;
@@ -26,6 +26,9 @@ public:
     void newCollection(const std::string name);
     void displayNotesFromCollection(const std::string name);
     void displayCollections();
+
+    void modifyNote(const std::string& title, const std::string& newText);
+    void changeLock(const std::string title);
 
     void registerO(Observer* const obs) override;
     void removeO(Observer* const obs) override;

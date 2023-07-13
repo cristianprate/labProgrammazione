@@ -15,9 +15,11 @@ int main() {
             std::cout << "3. VIEW ALL COLLECTIONS" << std::endl;
             std::cout << "4. SELECT A COLLECTION" << std::endl;
             std::cout << "5. ADD TO IMPORTANT" << std::endl;
-            std::cout << "6. EXIT" << std::endl;
+            std::cout << "6. CHANGE TEXT OF A NOTE" << std::endl;
+            std::cout << "7. CHANGE LOCK OF A NOTE" << std::endl;
+            std::cout << "8. EXIT" << std::endl;
             std::cin >> x;
-        } while (x < 0 || x > 6);
+        } while (x < 0 || x > 8);
         system("cls");
         switch (x) {
             default:
@@ -69,6 +71,22 @@ int main() {
                 app.addToImportant(title);
                 break;
             case 6:
+                std::cout << "Changing the text of a note... "<<std::endl;
+                std::cout << "Insert note title:";
+                std::cin.ignore();
+                std::getline(std::cin, title);
+                std::cout << "Insert note's new text:";
+                std::getline(std::cin, text);
+                app.modifyNote(title, text);
+                break;
+            case 7:
+                std::cout << "Changing the lock of a note... "<<std::endl;
+                std::cout << "Insert note title:";
+                std::cin.ignore();
+                std::getline(std::cin, title);
+                app.changeLock(title);
+                break;
+            case 8:
                 exit = true;
         }
         system("cls");

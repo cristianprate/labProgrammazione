@@ -19,8 +19,6 @@ public:
 
     const std::string &getTitle() const;
 
-    void setTitle(const std::string &title);
-
     const std::string &getText() const;
 
     void setText(const std::string &text);

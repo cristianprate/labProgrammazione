@@ -30,6 +30,7 @@ public:
     void changeLock(const std::string& title);
 
     void displayNotes();
+    void modifyNote(const std::string& title, const std::string& newText);
 
     void update(const std::string& title, const std::string& text) override;
     ~Collection() override;

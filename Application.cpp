@@ -40,7 +40,7 @@ void Application::newCollection(const std::string name) {
 void Application::displayNotesFromCollection(const std::string name) {
     for(auto collection : collections){
         if(collection->getName() == name)
-           dynamic_cast<Collection*>(collection)->displayNotes();
+           collection->displayNotes();
     }
 }
 
@@ -55,6 +55,21 @@ void Application::addToImportant(const std::string &title) {
         for(const auto& note : collection->getNotes()){
             if(note.getTitle() == title)
                 addToCollection(note.getTitle(), note.getText(), "Important");
+        }
+    }
+}
+
+void Application::modifyNote(const std::string& title, const std::string& newText) {
+    for(auto collection : collections){
+        collection->modifyNote(title, newText);
+    }
+}
+
+void Application::changeLock(const std::string title) {
+    for(auto &collection : collections){
+        for(const auto& note : collection->getNotes()){
+            if(note.getTitle() == title)
+                collection->changeLock(title);
         }
     }
 }

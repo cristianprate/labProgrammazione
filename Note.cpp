@@ -8,16 +8,13 @@ const std::string &Note::getTitle() const {
     return title;
 }
 
-void Note::setTitle(const std::string &title) {
-    Note::title = title;
-}
-
 const std::string &Note::getText() const {
     return text;
 }
 
 void Note::setText(const std::string &text) {
-    Note::text = text;
+    if(!lock)
+        Note::text = text;
 }
 
 bool Note::isLock() const {
