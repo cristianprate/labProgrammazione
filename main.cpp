@@ -1,12 +1,13 @@
 #include <iostream>
 #include "Application.h"
+#include "BlockedObserver.h"
 
 int main() {
     Application app;
     std::string name, title, text, appo;
     int x;
     bool exit = false;
-   do {
+    do {
         do {
             system("cls");
             std::cout << "Welcome to your personal Notes App!" << std::endl;
@@ -48,10 +49,10 @@ int main() {
                 std::cout << "Here's your collections:" << std::endl;
                 app.displayCollections();
                 std::cout << "Press 'a' to exit..." << std::endl;
-                do{
+                do {
                     std::cin.ignore();
                     std::getline(std::cin, appo);
-                }while(appo!="a");
+                } while (appo != "a");
                 break;
             case 4:
                 std::cout << "Type the name of the collection: ";
@@ -60,18 +61,18 @@ int main() {
                 std::cout << "Here's the notes of the " << name << " collection:" << std::endl;
                 app.displayNotesFromCollection(name);
                 std::cout << "Press 'a' to exit..." << std::endl;
-                do{
+                do {
                     std::getline(std::cin, appo);
-                }while(appo!="a");
+                } while (appo != "a");
                 break;
             case 5:
-                std::cout << "Type the title of the note you want to add to important: "<<std::endl;
+                std::cout << "Type the title of the note you want to add to important: " << std::endl;
                 std::cin.ignore();
                 std::getline(std::cin, title);
                 app.addToImportant(title);
                 break;
             case 6:
-                std::cout << "Changing the text of a note... "<<std::endl;
+                std::cout << "Changing the text of a note... " << std::endl;
                 std::cout << "Insert note title:";
                 std::cin.ignore();
                 std::getline(std::cin, title);
@@ -80,7 +81,7 @@ int main() {
                 app.modifyNote(title, text);
                 break;
             case 7:
-                std::cout << "Changing the lock of a note... "<<std::endl;
+                std::cout << "Changing the lock of a note... " << std::endl;
                 std::cout << "Insert note title:";
                 std::cin.ignore();
                 std::getline(std::cin, title);
@@ -94,3 +95,4 @@ int main() {
 
     return 0;
 }
+

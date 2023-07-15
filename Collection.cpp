@@ -5,17 +5,12 @@
 #include <iostream>
 #include "Collection.h"
 
-void Collection::update(const std::string& title, const std::string& text) {
-    addNote(title, text);
-    totNotes++;
-}
-
 void Collection::addNote(const std::string& title, const std::string& text) {
     Note n(title, text);
     notes.push_back(n);
 }
 
-std::string Collection::getText(const std::string &title) {
+const std::string &Collection::getText(const std::string &title) const{
     for(auto & note : notes){
         if(note.getTitle() == title){
             return note.getText();
@@ -24,7 +19,7 @@ std::string Collection::getText(const std::string &title) {
     return "";
 }
 
-bool Collection::isLocked(const std::string &title) {
+bool Collection::isLocked(const std::string &title) const{
     for(auto & note : notes){
         if(note.getTitle() == title){
             return note.isLock();
@@ -36,15 +31,21 @@ bool Collection::isLocked(const std::string &title) {
 void Collection::changeLock(const std::string& title) {
     for(auto & note : notes){
         if(note.getTitle() == title){
-            if(note.isLock())
+            if(note.isLock()) {
                 note.setLock(false);
-            else
+                totBlocked--;
+                notify();
+            }
+            else {
                 note.setLock(true);
+                totBlocked++;
+                notify();
+            }
         }
     }
 }
 
-void Collection::displayNotes() {
+void Collection::displayNotes() const{
     for(auto & note : notes){
         std::cout<<"-----------------------"<<note.getTitle()<<"---------------------"<<std::endl<<std::endl;
         std::cout<<note.getText()<<std::endl;
@@ -53,16 +54,13 @@ void Collection::displayNotes() {
 
 }
 
-Collection::Collection( const std::string& name, Subject *subject) :Observer(name), subject(subject), totNotes(0) {
-    subject->registerO(this);
+Collection::Collection( const std::string& name) :name(name), totBlocked(0) {
 }
 
 Collection::~Collection() {
-    subject->removeO(this);
-}
-
-std::vector<Note> &Collection::getNotes() {
-    return notes;
+    for(Observer* obs : observers){
+        delete obs;
+    }
 }
 
 void Collection::modifyNote(const std::string &title, const std::string &newText) {
@@ -71,6 +69,38 @@ void Collection::modifyNote(const std::string &title, const std::string &newText
             n.setText(newText);
         }
     }
+}
+
+const std::string &Collection::getName() const {
+    return name;
+}
+
+void Collection::notify() {
+    for(Observer *obs : observers){
+        obs->update();
+    }
+}
+
+void Collection::registerO(Observer * const obs) {
+    observers.push_back(obs);
+}
+
+void Collection::removeO(Observer * const obs) {
+    observers.remove(obs);
+}
+
+
+int Collection::getTotBlocked() const {
+    return totBlocked;
+}
+
+bool Collection::findNote(const std::string &title) const{
+    for(const Note& n : notes){
+        if(n.getTitle() == title){
+            return true;
+        }
+    }
+    return false;
 }
 
 

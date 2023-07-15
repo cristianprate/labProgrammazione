@@ -10,16 +10,12 @@
 
 class Observer {
 private:
-    std::string name;
 
 public:
-    explicit Observer(const std::string &name);
+    explicit Observer(){}
 
-    std::string getName(){
-        return name;
-    }
-    virtual void update(const std::string& title, const std::string& text) =0;
-    virtual ~Observer() =0;
+    virtual void update() =0;
+    virtual ~Observer() {}
 
 };
 

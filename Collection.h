@@ -7,32 +7,41 @@
 
 
 #include <vector>
+#include <list>
 #include "Observer.h"
 #include "Note.h"
 #include "Subject.h"
 #include "Application.h"
 
-class Collection : public Observer{
+class Collection : public Subject{
 private:
     std::vector<Note> notes;
-    int totNotes;
-    Subject* subject;
-
-    void addNote(const std::string& title, const std::string& text);
+    std::string name;
+    int totBlocked;
+    std::list<Observer*> observers;
 
 public:
-    explicit Collection( const std::string& name, Subject *subject);
+    explicit Collection( const std::string& name);
+    //Class status controllers
+    const std::string &getName() const;
+    int getTotBlocked() const;
 
-    std::string getText(const std::string& title);
-    std::vector<Note> &getNotes();
+    //Notes controllers
+    const std::string &getText(const std::string& title) const;
 
-    bool isLocked(const std::string& title);
+    bool isLocked(const std::string& title) const;
     void changeLock(const std::string& title);
 
-    void displayNotes();
+    void displayNotes() const;
     void modifyNote(const std::string& title, const std::string& newText);
+    void addNote(const std::string& title, const std::string& text);
+    bool findNote(const std::string& title) const; //TODO FAI TEST
 
-    void update(const std::string& title, const std::string& text) override;
+    //Pattern Observer logic
+    void notify() override;
+    void registerO(Observer* obs) override;
+    void removeO(Observer* obs) override;
+
     ~Collection() override;
 };
 

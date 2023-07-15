@@ -17,6 +17,10 @@ private:
 public:
     Note(const std::string &title, const std::string &text);
 
+    Note();
+
+    Note& operator=(Note const &n);
+
     const std::string &getTitle() const;
 
     const std::string &getText() const;

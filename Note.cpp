@@ -28,3 +28,18 @@ void Note::setLock(bool lock) {
 Note::Note(const std::string &title, const std::string &text) : title(title), text(text), lock(false) {
 }
 
+Note::Note() {
+    title="";
+    text="";
+    lock=false;
+}
+
+Note &Note::operator=(Note const &n) {
+    if(&n != this) {
+        this->title = n.title;
+        this->text = n.text;
+        this->lock = n.lock;
+        return *this;
+    }
+}
+

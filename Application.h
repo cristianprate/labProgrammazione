@@ -11,28 +11,25 @@
 #include <vector>
 
 class Collection; //forward declaration to avoid circular dependency among Application and Collection headers(both have class A and B members attribute)
-class Application : public Subject{
+class Application {
 private:
     std::vector<Collection*> collections;
-
-    void notify(const std::string & title, const std::string & text, const std::string &collName) override;
+    std::list<Observer*> collectionsObs;
 
 public:
     Application();
 
     void addToCollection(const std::string & title, const std::string & text, const std::string &collName);
-    void addToImportant(const std::string & title);
+    bool addToImportant(const std::string & title); //TODO TO TEST
 
     void newCollection(const std::string name);
-    void displayNotesFromCollection(const std::string name);
-    void displayCollections();
+    void displayNotesFromCollection(const std::string name) const;
+    void displayCollections() const;
 
     void modifyNote(const std::string& title, const std::string& newText);
-    void changeLock(const std::string title);
+    bool changeLock(const std::string title); //TODO TO TEST
 
-    void registerO(Observer* const obs) override;
-    void removeO(Observer* const obs) override;
-    ~Application() override;
+    ~Application();
 };
 
 
