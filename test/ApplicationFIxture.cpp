@@ -15,3 +15,17 @@ protected:
 
     Application a = Application();
 };
+
+TEST_F(ApplicationSuite, AddToImportantTest){
+    ASSERT_TRUE(a.addToImportant("cosa portare"));
+}
+
+TEST_F(ApplicationSuite, AddToImportantWrongTest){
+    ASSERT_FALSE(a.addToImportant("dove andare"));
+}
+
+TEST_F(ApplicationSuite, ModifyNoteTest){
+    ASSERT_TRUE(a.modifyNote("cosa portare", "acqua"));
+}
+
+

@@ -4,18 +4,20 @@
 
 #include "gtest/gtest.h"
 #include "../Collection.h"
+#include "../BlockedObserver.h"
 
 class CollectionSuite : public ::testing::Test{
 protected:
     virtual void SetUp(){
-        c.getNotes().emplace_back("cosa portare", "ombrellone, asciugamani");
+        c.addNote("cosa portare", "ombrellone, asciugamani");
+        BlockedObserver obs(&c);
     }
 
-    Collection c = Collection("mare", new Application());
+    Collection c = Collection("mare");
 };
 
-TEST_F(CollectionSuite, TestIsLocked) {
-    ASSERT_EQ(false, c.isLocked("cosa portare"));
+TEST_F(CollectionSuite, WrongNoteTest) {
+    ASSERT_EQ(false, c.findNote("dove andare"));
 }
 
 

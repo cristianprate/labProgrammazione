@@ -15,7 +15,7 @@
 
 class Collection : public Subject{
 private:
-    std::vector<Note> notes;
+    std::list<Note> notes;
     std::string name;
     int totBlocked;
     std::list<Observer*> observers;
@@ -33,9 +33,9 @@ public:
     void changeLock(const std::string& title);
 
     void displayNotes() const;
-    void modifyNote(const std::string& title, const std::string& newText);
+    bool modifyNote(const std::string& title, const std::string& newText);
     void addNote(const std::string& title, const std::string& text);
-    bool findNote(const std::string& title) const; //TODO FAI TEST
+    bool findNote(const std::string& title) const;
 
     //Pattern Observer logic
     void notify() override;

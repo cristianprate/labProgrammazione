@@ -55,10 +55,12 @@ bool Application::addToImportant(const std::string &title) {
     return false;
 }
 
-void Application::modifyNote(const std::string& title, const std::string& newText) {
+bool Application::modifyNote(const std::string& title, const std::string& newText) {
+    bool output=false;
     for(auto collection : collections){
-        collection->modifyNote(title, newText);
+        output = collection->modifyNote(title, newText);
     }
+    return output;
 }
 
 bool Application::changeLock(const std::string title) {
@@ -73,6 +75,10 @@ bool Application::changeLock(const std::string title) {
 }
 
 Application::~Application() {
+
+}
+
+bool Application::deleteNote(const std::string &title) {
 
 }
 

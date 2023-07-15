@@ -63,12 +63,15 @@ Collection::~Collection() {
     }
 }
 
-void Collection::modifyNote(const std::string &title, const std::string &newText) {
+bool Collection::modifyNote(const std::string &title, const std::string &newText) {
+    bool output=false;
     for (Note &n: notes) {
         if(n.getTitle()==title){
             n.setText(newText);
+            output=true;
         }
     }
+    return output;
 }
 
 const std::string &Collection::getName() const {
@@ -102,6 +105,7 @@ bool Collection::findNote(const std::string &title) const{
     }
     return false;
 }
+
 
 
 

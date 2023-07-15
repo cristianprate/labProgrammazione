@@ -20,14 +20,14 @@ public:
     Application();
 
     void addToCollection(const std::string & title, const std::string & text, const std::string &collName);
-    bool addToImportant(const std::string & title); //TODO TO TEST
+    bool addToImportant(const std::string & title);
 
     void newCollection(const std::string name);
     void displayNotesFromCollection(const std::string name) const;
     void displayCollections() const;
 
-    void modifyNote(const std::string& title, const std::string& newText);
-    bool changeLock(const std::string title); //TODO TO TEST
+    bool modifyNote(const std::string& title, const std::string& newText);
+    bool changeLock(const std::string title);
 
     ~Application();
 };
