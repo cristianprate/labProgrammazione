@@ -34,9 +34,10 @@ bool Application::newCollection(const std::string &name) {
 
 void Application::displayNotesFromCollection(const std::string &name) const {
     for (auto collection: collections) {
-        if (collection->getName() == name)
-            std::cout<<"Total number of notes in the collection: "<<collection->getTotNotes()<<std::endl;
+        if (collection->getName() == name) {
+            std::cout << "Total number of notes in the collection: " << collection->getTotNotes() << std::endl;
             collection->displayNotes();
+        }
     }
 }
 
@@ -84,10 +85,6 @@ bool Application::changeLock(const std::string &collTitle, const std::string &ti
     return output;
 }
 
-Application::~Application() {
-
-}
-
 bool Application::deleteNote(const std::string &collTitle, const std::string &title) {
     bool output = false;
     for (auto collection: collections) {
@@ -98,9 +95,11 @@ bool Application::deleteNote(const std::string &collTitle, const std::string &ti
     return output;
 }
 
-int Application::getCollectionsNumber() const {
+unsigned int Application::getCollectionsNumber() const {
     return collections.size();
 }
 
+Application::~Application() {
 
+}
 

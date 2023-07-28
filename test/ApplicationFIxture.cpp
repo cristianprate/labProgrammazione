@@ -43,6 +43,10 @@ TEST_F(ApplicationSuite, CollNumberTest){
     ASSERT_EQ(3, a.getCollectionsNumber());
 }
 
+TEST_F(ApplicationSuite, WrongDeleteTest){
+    a.changeLock("mare","cosa portare");
+    ASSERT_FALSE(a.deleteNote("mare", "cosa portare"));
+}
 
 
 

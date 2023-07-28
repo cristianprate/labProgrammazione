@@ -26,26 +26,21 @@ public:
     //getters
     const std::string &getName() const;
 
-    int getTotBlocked() const;
-
+    unsigned int getTotBlocked() const;
     unsigned int getTotNotes() const;
 
     //Notes methods
-    const std::string &getText(const std::string &title) const;
-
+    void changeLock(const std::string &title);
     bool isLocked(const std::string &title) const;
 
-    void changeLock(const std::string &title);
-
-    void displayNotes() const;
-
-    bool modifyNote(const std::string &title, const std::string &newText);
-
     void addNote(const std::string &title, const std::string &text);
+    bool modifyNote(const std::string &title, const std::string &newText);
+    bool deleteNote(const std::string &title);
 
     bool findNote(const std::string &title) const;
+    void displayNotes() const;
 
-    bool deleteNote(const std::string &title);
+    const std::string &getText(const std::string &title) const;
 
     //Pattern Observer logic
     void notify() override;

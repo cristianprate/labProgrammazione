@@ -31,7 +31,7 @@ TEST_F(CollectionSuite, DeleteLockedNoteTest) {
     c.changeLock("cosa portare");
     ASSERT_EQ(1, c.getTotBlocked());
     c.deleteNote("cosa portare");
-    ASSERT_EQ(0, c.getTotBlocked());
+    ASSERT_EQ(1, c.getTotBlocked());
 }
 
 

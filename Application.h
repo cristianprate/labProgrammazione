@@ -21,7 +21,7 @@ public:
 
     //Collections methods
     bool newCollection(const std::string &name);
-    int getCollectionsNumber() const;
+    unsigned int getCollectionsNumber() const;
 
     void displayCollections() const;
 
@@ -30,7 +30,6 @@ public:
     bool addToImportant(const std::string &title);
 
     bool modifyNote(const std::string &collTitle, const std::string &title, const std::string &newText);
-
     bool deleteNote(const std::string &collTitle, const std::string &title);
 
     bool changeLock(const std::string &collTitle, const std::string &title);

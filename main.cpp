@@ -9,7 +9,7 @@ int main() {
     bool exit = false;
     do {
         do {
-            //system("cls");
+            system("cls");
             std::cout << "Welcome to your personal Notes App!" << std::endl;
             std::cout << "1. CREATE COLLECTION" << std::endl;
             std::cout << "2. CREATE NOTE" << std::endl;
@@ -21,11 +21,11 @@ int main() {
             std::cout << "8. DELETE A NOTE" << std::endl;
             std::cout << "9. EXIT" << std::endl;
             std::cin >> x;
-        } while (x < 0 || x > 8);
-        //system("cls");
+        } while (x < 0 || x > 9);
+        system("cls");
         switch (x) {
             default:
-                //system("cls");
+                system("cls");
             case 1:
                 std::cout << "Creating a new collection......" << std::endl;
                 std::cout << "Insert collection name: ";
@@ -106,7 +106,7 @@ int main() {
             case 9:
                 exit = true;
         }
-        //system("cls");
+        system("cls");
     } while (!exit);
 
     return 0;

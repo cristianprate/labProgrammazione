@@ -93,7 +93,7 @@ void Collection::removeO(Observer * const obs) {
 }
 
 
-int Collection::getTotBlocked() const {
+unsigned int Collection::getTotBlocked() const {
     return totBlocked;
 }
 
@@ -113,10 +113,10 @@ unsigned int Collection::getTotNotes() const {
 bool Collection::deleteNote(const std::string &title) {
     for(const Note& n : notes){
         if(n.getTitle() == title){
-            if(n.isLock())
-                totBlocked--;
-            notes.remove(n);
-            return true;
+            if(!n.isLock()) {
+                notes.remove(n);
+                return true;
+            }
         }
     }
     return false;
