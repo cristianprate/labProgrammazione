@@ -106,6 +106,22 @@ bool Collection::findNote(const std::string &title) const{
     return false;
 }
 
+unsigned int Collection::getTotNotes() const {
+    return notes.size();
+}
+
+bool Collection::deleteNote(const std::string &title) {
+    for(const Note& n : notes){
+        if(n.getTitle() == title){
+            if(n.isLock())
+                totBlocked--;
+            notes.remove(n);
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 

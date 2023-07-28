@@ -19,7 +19,7 @@ public:
 
     Note();
 
-    Note& operator=(Note const &n);
+    bool operator ==(const Note &n) const;
 
     const std::string &getTitle() const;
 

@@ -12,9 +12,8 @@ class Observer {
 private:
 
 public:
-    explicit Observer(){}
+    virtual void update() = 0;
 
-    virtual void update() =0;
     virtual ~Observer() {}
 
 };

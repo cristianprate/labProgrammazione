@@ -25,7 +25,24 @@ TEST_F(ApplicationSuite, AddToImportantWrongTest){
 }
 
 TEST_F(ApplicationSuite, ModifyNoteTest){
-    ASSERT_TRUE(a.modifyNote("cosa portare", "acqua"));
+    ASSERT_TRUE(a.modifyNote("mare","cosa portare", "acqua"));
 }
+
+TEST_F(ApplicationSuite, DuplicateCollTest){
+    ASSERT_FALSE(a.newCollection("mare"));
+    ASSERT_EQ(2, a.getCollectionsNumber());
+}
+
+TEST_F(ApplicationSuite, WrongDeleteNoteTest){
+    ASSERT_FALSE(a.deleteNote("mare", "cosa fare"));
+    ASSERT_FALSE(a.deleteNote("montagna", "cosa portare"));
+}
+
+TEST_F(ApplicationSuite, CollNumberTest){
+    a.newCollection("Montagna");
+    ASSERT_EQ(3, a.getCollectionsNumber());
+}
+
+
 
 

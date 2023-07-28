@@ -13,34 +13,46 @@
 #include "Subject.h"
 #include "Application.h"
 
-class Collection : public Subject{
+class Collection : public Subject {
 private:
     std::list<Note> notes;
     std::string name;
+    std::list<Observer *> observers;
     int totBlocked;
-    std::list<Observer*> observers;
 
 public:
-    explicit Collection( const std::string& name);
-    //Class status controllers
+    explicit Collection(const std::string &name);
+
+    //getters
     const std::string &getName() const;
+
     int getTotBlocked() const;
 
-    //Notes controllers
-    const std::string &getText(const std::string& title) const;
+    unsigned int getTotNotes() const;
 
-    bool isLocked(const std::string& title) const;
-    void changeLock(const std::string& title);
+    //Notes methods
+    const std::string &getText(const std::string &title) const;
+
+    bool isLocked(const std::string &title) const;
+
+    void changeLock(const std::string &title);
 
     void displayNotes() const;
-    bool modifyNote(const std::string& title, const std::string& newText);
-    void addNote(const std::string& title, const std::string& text);
-    bool findNote(const std::string& title) const;
+
+    bool modifyNote(const std::string &title, const std::string &newText);
+
+    void addNote(const std::string &title, const std::string &text);
+
+    bool findNote(const std::string &title) const;
+
+    bool deleteNote(const std::string &title);
 
     //Pattern Observer logic
     void notify() override;
-    void registerO(Observer* obs) override;
-    void removeO(Observer* obs) override;
+
+    void registerO(Observer *obs) override;
+
+    void removeO(Observer *obs) override;
 
     ~Collection() override;
 };

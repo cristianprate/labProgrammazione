@@ -9,8 +9,10 @@ TEST(Collection, LockCheck){
     Collection c = Collection("mare");
     c.addNote("cosa portare", "ombrellone, asciugamani");
     ASSERT_FALSE(c.isLocked("cosa portare"));
+    ASSERT_EQ(0, c.getTotBlocked());
     c.changeLock("cosa portare");
     ASSERT_TRUE(c.isLocked("cosa portare"));
+    ASSERT_EQ(1, c.getTotBlocked());
 }
 
 TEST(Collection, DefaulConstructorCheck){

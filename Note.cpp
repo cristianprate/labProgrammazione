@@ -13,7 +13,7 @@ const std::string &Note::getText() const {
 }
 
 void Note::setText(const std::string &text) {
-    if(!lock)
+    if (!lock)
         Note::text = text;
 }
 
@@ -29,17 +29,13 @@ Note::Note(const std::string &title, const std::string &text) : title(title), te
 }
 
 Note::Note() {
-    title="";
-    text="";
-    lock=false;
+    title = "";
+    text = "";
+    lock = false;
 }
 
-Note &Note::operator=(Note const &n) {
-    if(&n != this) {
-        this->title = n.title;
-        this->text = n.text;
-        this->lock = n.lock;
-        return *this;
-    }
+bool Note::operator==(const Note &n) const {
+    return title==n.title && lock==n.lock && text==n.text;
 }
+
 

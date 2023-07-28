@@ -9,7 +9,7 @@ int main() {
     bool exit = false;
     do {
         do {
-            system("cls");
+            //system("cls");
             std::cout << "Welcome to your personal Notes App!" << std::endl;
             std::cout << "1. CREATE COLLECTION" << std::endl;
             std::cout << "2. CREATE NOTE" << std::endl;
@@ -18,13 +18,14 @@ int main() {
             std::cout << "5. ADD TO IMPORTANT" << std::endl;
             std::cout << "6. CHANGE TEXT OF A NOTE" << std::endl;
             std::cout << "7. CHANGE LOCK OF A NOTE" << std::endl;
-            std::cout << "8. EXIT" << std::endl;
+            std::cout << "8. DELETE A NOTE" << std::endl;
+            std::cout << "9. EXIT" << std::endl;
             std::cin >> x;
         } while (x < 0 || x > 8);
-        system("cls");
+        //system("cls");
         switch (x) {
             default:
-                system("cls");
+                //system("cls");
             case 1:
                 std::cout << "Creating a new collection......" << std::endl;
                 std::cout << "Insert collection name: ";
@@ -78,19 +79,34 @@ int main() {
                 std::getline(std::cin, title);
                 std::cout << "Insert note's new text:";
                 std::getline(std::cin, text);
-                app.modifyNote(title, text);
+                std::cout << "Insert collection's name:";
+                std::cin.ignore();
+                std::getline(std::cin, name);
+                app.modifyNote(name, title, text);
                 break;
             case 7:
                 std::cout << "Changing the lock of a note... " << std::endl;
-                std::cout << "Insert note title:";
+                std::cout << "Insert note's title:";
                 std::cin.ignore();
                 std::getline(std::cin, title);
-                app.changeLock(title);
+                std::cout << "Insert collection's name:";
+                std::cin.ignore();
+                std::getline(std::cin, name);
+                app.changeLock(name, title);
                 break;
             case 8:
+                std::cout << "Deleting a note... " << std::endl;
+                std::cout << "Insert note's title:";
+                std::cin.ignore();
+                std::getline(std::cin, title);
+                std::cout << "Insert collection's name:";
+                std::getline(std::cin, name);
+                app.deleteNote(name, title);
+                break;
+            case 9:
                 exit = true;
         }
-        system("cls");
+        //system("cls");
     } while (!exit);
 
     return 0;

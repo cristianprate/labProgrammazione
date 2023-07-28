@@ -9,11 +9,14 @@
 #include <string>
 #include "Observer.h"
 
-class Subject{
+class Subject {
 public:
-    virtual void notify()=0;
-    virtual void registerO(Observer* const obs)=0;
-    virtual void removeO(Observer* const obs)=0;
+    virtual void notify() = 0;
+
+    virtual void registerO(Observer *obs) = 0;
+
+    virtual void removeO(Observer *obs) = 0;
+
     virtual ~Subject() {}
 };
 
